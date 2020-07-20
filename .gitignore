@@ -44,3 +44,5 @@ yarn-debug.log*
 *.swp
 *.swo
 
+# sublime files
+*.sublime-workspace
