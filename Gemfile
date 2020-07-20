@@ -25,6 +25,8 @@ gem 'devise'
 gem 'devise-bootstrap-views'
 # iexcloud gem
 gem 'iex-ruby-client'
+# fontawesome
+gem 'font-awesome-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
