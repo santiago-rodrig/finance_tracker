@@ -1,2 +1,6 @@
-document.getElementById('result').innerHTML = '<%= j(render('users/result.html')) %>'
+<% if @stock %>
+  document.getElementById('result').innerHTML = '<%= j(render('users/result.html')) %>';
+<% else %>
+  document.getElementById('messages').innerHTML = '<%= j(render('layouts/messages')) %>';
+<% end %>
 
