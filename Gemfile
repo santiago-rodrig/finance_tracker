@@ -21,6 +21,8 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 # devise for authentication
 gem 'devise'
+# devise bootstraptified views
+gem 'devise-bootstrap-views'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
