@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-9">
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tracked_stocks.each do |stock| %>
+          <tr>
+            <th scope="row"><%= sotck.ticker %></th>
+            <td><%= stock.name %></td>
+            <td><%= stock.price %></td>
+            <td>ACTIONS</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
