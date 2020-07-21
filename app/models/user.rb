@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :user_stocks, dependent: :destroy
   has_many :stocks, through: :user_stocks
+  has_many :friendships
+  has_many :friends, through: :friendships
 
   def max_reached?
     stocks.count >= 10
@@ -17,6 +19,10 @@ class User < ApplicationRecord
 
   def can_track_stock?(ticker_symbol)
     !(max_reached? || stock_exists?(ticker_symbol))
+  end
+
+  def can_track_friend?(friend)
+    !(friends.include?(friend) || friend == self)
   end
 
   def full_name

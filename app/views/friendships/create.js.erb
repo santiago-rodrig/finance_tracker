@@ -1,0 +1,7 @@
+document.addEventListener('ajax:success', function() {
+  let messages = document.getElementById('messages');
+  messages.innerHTML = '<%= j(render(partial: 'layouts/messages.html')) %>';
+  let friendsList = document.getElementById('friends-list');
+  friendsList.innerHTML = '<%= j(render(partial: 'friendships/list.html')) %>';
+});
+

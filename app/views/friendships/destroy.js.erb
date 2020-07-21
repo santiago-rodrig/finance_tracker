@@ -1,0 +1,13 @@
+document.addEventListener('ajax:success', function() {
+  let messages = document.getElementById('messages');
+  let friendsList = document.getElementById('friends-list');
+  let results = document.getElementById('result');
+  results.innerHTML = '';
+  messages.innerHTML = '<%= j(render(partial: 'layouts/messages.html')) %>';
+  <% if @tracked_friends&.any? %>
+    friendsList.innerHTML = '<%= j(render(partial: 'friendships/list.html')) %>';
+  <% else %>
+    friendsList.innerHTML = '';
+  <% end %>
+});
+
