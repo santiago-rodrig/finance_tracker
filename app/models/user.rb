@@ -20,7 +20,7 @@ class User < ApplicationRecord
   end
 
   def full_name
-    ((first_name || last_name) && "#{firsst_name} #{last_name}") || 'Anonymous'
+    ((first_name || last_name) && "#{first_name} #{last_name}") || 'Anonymous'
   end
 end
 

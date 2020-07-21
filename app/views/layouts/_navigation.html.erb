@@ -11,6 +11,16 @@
           <li class="nav-item <%= 'active' if request.path == my_portfolio_path %>">
             <%= link_to 'Portfolio', my_portfolio_path, class: 'nav-link' %>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Account
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to edit_user_registration_path, class: 'dropdown-item' do %>
+                <%= fa_icon 'edit' %> Edit
+              <% end %>
+            </div>
+          </li>
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item mr-3 pt-1 text-light">
