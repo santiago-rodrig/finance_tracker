@@ -1,18 +1,16 @@
-<h1>My Portfolio</h1>
-<div class="search-area">
-  <h3>Search Stocks</h3>
-  <%= form_tag(search_stock_path, method: :get, remote: true) do %>
-    <div class="form-group row">
-      <div class="col-sm-9 no-right-padding">
+<h1 class="mb-4">My Portfolio</h1>
+<div class="row">
+  <div class="col-12 col-md-9">
+    <%= form_tag(search_stock_path, method: :get, remote: true, class: 'border shadow p-3') do %>
+      <div class="form-group">
+        <%= label_tag :stock, 'Search stocks' %>
         <%= text_field_tag :stock, params[:stock], placeholder: 'Stock ticker symbol', autofocus: true, class: 'form-control form-control-lg' %>
       </div>
-      <div class="col-sm-3 no-left-padding">
-        <%= button_tag type: :submit, class: 'btn btn-success' do %>
-          <%= fa_icon 'search 2x' %>
-        <% end %>
-      </div>
-    </div>
+      <%= button_tag type: :submit, class: 'btn btn-success' do %>
+        Search <%= fa_icon 'search' %>
+    <% end %>
   <% end %>
+  </div>
 </div>
 <div id="result"></div>
 <% if @tracked_stocks&.any? %>

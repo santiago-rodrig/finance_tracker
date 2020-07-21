@@ -1,17 +1,20 @@
 @import 'bootstrap/dist/css/bootstrap';
 
-.search-area {
-  padding-top: 50px;
+html {
+  box-sizing: border-box;
 }
 
-.no-right-padding {
-  padding-right: 0 !important;
-}
-
-.no-left-padding {
-  padding-left: 0 !important;
+*::before,
+*,
+*::after {
+  box-sizing: inherit;
 }
 
 .results-block {
   display: inline-block;
 }
+
+.table-box {
+  overflow: auto;
+}
+
