@@ -9,13 +9,15 @@
           <th scope="col">Actions</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="stocks">
         <% @tracked_stocks.each do |stock| %>
           <tr>
             <th scope="row"><%= stock.ticker %></th>
             <td><%= stock.name %></td>
             <td><%= stock.last_price %></td>
-            <td>ACTIONS</td>
+            <td>
+              <%= link_to 'Remove', user_stock_path(user: current_user, stock_tracked: stock), method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+            </td>
           </tr>
         <% end %>
       </tbody>
