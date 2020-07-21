@@ -18,4 +18,9 @@ class User < ApplicationRecord
   def can_track_stock?(ticker_symbol)
     !(max_reached? || stock_exists?(ticker_symbol))
   end
+
+  def full_name
+    ((first_name || last_name) && "#{firsst_name} #{last_name}") || 'Anonymous'
+  end
 end
+
