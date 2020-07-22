@@ -3,5 +3,11 @@ document.addEventListener('ajax:success', function() {
   messages.innerHTML = '<%= j(render(partial: 'layouts/messages.html')) %>';
   let friendsList = document.getElementById('friends-list');
   friendsList.innerHTML = '<%= j(render(partial: 'friendships/list.html')) %>';
+  let resultActions = document.getElementById('result-actions-<%= @friend.id.to_s %>');
+  const alreadyFollowing = document.createElement('span');
+  alreadyFollowing.classList.add('badge', 'badge-info');
+  alreadyFollowing.textContent = 'You are already following this user';
+  resultActions.innerHTML = '';
+  resultActions.append(alreadyFollowing);
 });
 

@@ -1,11 +1,10 @@
 document.addEventListener('ajax:success', function() {
   let results = document.getElementById('result');
   let messages = document.getElementById('messages');
+  messages.innerHTML = '<%= j(render(partial: 'layouts/messages.html')) %>';
   <% if !@error %>
-    messages.innerHTML = '';
     results.innerHTML = '<%= j(render(partial: 'users/friends_result.html')) %>';
   <% else %>
-    messages.innerHTML = '<%= j(render(partial: 'layouts/messages.html')) %>';
     results.innerHTML = '';
   <% end %>
 });

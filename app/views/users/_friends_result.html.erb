@@ -3,19 +3,21 @@
     <strong>Email:</strong> <%= friend.email %>
     <strong>First name:</strong> <%= friend.first_name %>
     <strong>Last name:</strong> <%= friend.last_name %>
-    <% if current_user.can_track_friend?(friend) %>
-      <%= link_to 'Start following', friendships_path(user: current_user, new_friend: friend), method: :post, class: 'btn btn-sm btn-success' %>
-    <% else %>
-      <% if friend == current_user %>
-        <span class="badge badge-info">
-          You are this user
-        </span>
+    <span id="result-actions-<%= friend.id.to_s %>">
+      <% if current_user.can_track_friend?(friend) %>
+        <%= link_to 'Start following', friendships_path(user: current_user, new_friend: friend), method: :post, class: 'btn btn-sm btn-success', remote: true %>
       <% else %>
-        <span class="badge badge-info">
-          You are already following this user
-        </span>
+        <% if friend == current_user %>
+          <span class="badge badge-info">
+            You are this user
+          </span>
+        <% else %>
+          <span class="badge badge-info">
+            You are already following this user
+          </span>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  </span>
 <% end %>
 

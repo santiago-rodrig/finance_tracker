@@ -13,6 +13,8 @@ class UsersController < ApplicationController
       @friends = @friends.or(User.where('last_name LIKE ?', "%#{params[:friend]}"))
       @friends = @friends.or(User.where('email LIKE ?', "%#{params[:friend]}%"))
       @error = false
+      flash.now.alert = nil
+      flash.now.notice = nil
       if @friends.any?
         respond_to do |fmt|
           fmt.js { render 'users/friends_result' }
