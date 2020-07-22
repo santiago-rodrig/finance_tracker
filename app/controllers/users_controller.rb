@@ -22,7 +22,8 @@ class UsersController < ApplicationController
         end
       else
         @error = true;
-        flash[:alert] = 'No results.'
+        flash.now.notice = nil
+        flash.now[:alert] = 'No results.'
         respond_to do |fmt|
           fmt.js { render 'users/friends_result' }
           fmt.html { render 'users/my_friends' }
@@ -30,7 +31,8 @@ class UsersController < ApplicationController
       end
     else
       @error = true
-      flash[:alert] = 'Please provide a name or an email.'
+      flash.now.notice = nil
+      flash.now[:alert] = 'Please provide a name or an email.'
       respond_to do |fmt|
         fmt.js { render 'users/friends_result' }
         fmt.html { render 'users/my_friends' }
