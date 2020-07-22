@@ -4,8 +4,6 @@ document.addEventListener('ajax:success', function() {
   messages.innerHTML = '<%= j(render(partial: 'layouts/messages.html')) %>';
   <% if !@error %>
     results.innerHTML = '<%= j(render(partial: 'users/friends_result.html')) %>';
-  <% else %>
-    results.innerHTML = '';
   <% end %>
 });
 
