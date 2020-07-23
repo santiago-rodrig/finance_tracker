@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   post 'friendships', to: 'friendships#create'
   get 'friendships', to: 'friendships#index'
   delete 'friendship', to: 'friendships#destroy'
+  resources :users, only: :show
 end
 

@@ -3,24 +3,28 @@
     <div class="list-group list-group-horizontal-md mt-3">
       <% @friends.each do |friend| %>
         <div class="list-group-item">
-          <h5 class="mb-1"><%= friend.full_name %></h5>
+          <div>
+            <h5><%= friend.full_name %></h5>
+          </div>
+          <div class="mb-3">
+            <% if friend == current_user %>
+              <span class="badge badge-info">
+                You are this user
+              </span>
+            <% else %>
+              <span class="badge badge-info">
+                You are already following this user
+              </span>
+            <% end %>
+          </div>
           <dl>
             <dt>Email</dt>
             <dd><%= friend.email %></dd>
           </dl>
           <div id="result-actions-<%= friend.id.to_s %>">
+            <%= link_to 'View profile', friend, class: 'btn btn-sm btn-dark' %>
             <% if current_user.can_track_friend?(friend) %>
               <%= link_to 'Start following', friendships_path(user: current_user, new_friend: friend), method: :post, class: 'btn btn-sm btn-success', remote: true %>
-            <% else %>
-              <% if friend == current_user %>
-                <span class="badge badge-info">
-                  You are this user
-                </span>
-              <% else %>
-                <span class="badge badge-info">
-                  You are already following this user
-                </span>
-              <% end %>
             <% end %>
           </div>
         </div>

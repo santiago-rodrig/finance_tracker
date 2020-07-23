@@ -16,6 +16,7 @@
             <td><%= friend.first_name %></td>
             <td><%= friend.last_name %></td>
             <td>
+              <%= link_to 'View Profile', friend, class: 'btn btn-sm btn-dark' %>
               <%= link_to 'Remove', friendship_path(user: current_user, tracked_friend: friend), method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger', remote: true %>
             </td>
           </tr>

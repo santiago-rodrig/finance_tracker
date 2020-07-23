@@ -1,0 +1,33 @@
+<h1 class="mb-4 mt-3 mt-md-4"><%= @user.full_name %>&apos;s profile</h1>
+<div class="row">
+  <div class="col-md-9">
+    <dl>
+      <dt>Email</dt>
+      <dd><%= @user.email %></dd>
+      <dt>First name</dt>
+      <dd><%= @user.first_name %></dd>
+      <dt>Last name</dt>
+      <dd><%= @user.last_name %></dd>
+    </dl>
+  </div>
+</div>
+<h2>Portfolio</h2>
+<% if current_user.max_reached? %>
+  <div class="alert alert-warning d-inline-block">
+    You have reached the maximum number of tracked stocks,
+    you won&apos;t be able to track any stock from this
+    user's portfolio.
+  </div>
+<% end %>
+<% if @tracked_stocks&.any? %>
+  <%= render 'stocks/profile_list' %>
+<% else %>
+  <div class="row">
+    <div class="col-9">
+      <div class="alert alert-warning d-inline-block">
+        This user doesn't have any stocks in his portfolio.
+      </div>
+    </div>
+  </div>
+<% end %>
+

@@ -7,6 +7,11 @@ class UsersController < ApplicationController
     @tracked_friends = current_user.friends
   end
 
+  def show
+    @user = User.find(params[:id])
+    @tracked_stocks = @user.stocks
+  end
+
   def search_friend
     if params[:friend].present?
       @friends = User.where('first_name LIKE ?', "#{params[:friend]}%")
