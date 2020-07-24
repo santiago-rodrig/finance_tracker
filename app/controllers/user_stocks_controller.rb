@@ -15,6 +15,8 @@ class UserStocksController < ApplicationController
 
   def destroy
     @user_stock = UserStock.find_by(user_id: params[:user], stock_id: params[:stock_tracked])
+    @stock = @user_stock.stock
+    @ticker = @stock.ticker
     @user = User.find(params[:user])
     @user_stock&.destroy
     @tracked_stocks = @user.reload.stocks

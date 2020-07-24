@@ -1,7 +1,7 @@
 <div class="row mt-4">
   <div class="col-md-9">
     <div class="list-group list-group-horizontal-md">
-      <div class="list-group-item">
+      <div class="list-group-item" id="<%= @stock.ticker %>">
         <h5 class="<%= 'mb-3' if current_user.can_track_stock?(@stock.ticker) %>">
           <%= @stock.name %>
         </h5>

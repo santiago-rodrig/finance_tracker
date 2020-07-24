@@ -1,27 +1,11 @@
 document.addEventListener('ajax:success', function() {
-  let stocksList = document.getElementById('stocks');
-  stocksList.innerHTML = '';
+  let stocksList = document.getElementById('stocks-list');
   let messages = document.getElementById('messages');
-  let row = null;
-  let ticker = null;
-  let name = null;
-  let price = null;
-  let actions = null;
-  let deleteLink = null;
-  <% @tracked_stocks.each do |stock| %>
-    row = document.createElement('tr');
-    ticker = document.createElement('td');
-    ticker.textContent = '<%= j(stock.ticker) %>';
-    name = document.createElement('td');
-    name.textContent = '<%= j(stock.name) %>';
-    price = document.createElement('td');
-    price.textContent = '<%= j(stock.last_price) %>';
-    actions = document.createElement('td');
-    deleteLink = '<%= j(link_to 'Remove', user_stock_path(user: current_user, stock_tracked: stock), method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger') %>';
-    actions.innerHTML += deleteLink;
-    row.append(ticker, name, price, actions);
-    stocksList.append(row);
-  <% end %>
-  messages.innerHTML = '<%= j(render('layouts/messages')) %>';
+  let result = document.getElementById('<%= @ticker %>');
+  if (result) {
+    document.getElementById('result').innerHTML = '<%= j(render(partial: 'users/result.html')) %>';
+  }
+  messages.innerHTML = '<%= j(render(partial: 'layouts/messages.html')) %>';
+  stocksList.innerHTML = '<%= j(render(partial: 'stocks/list.html')) %>';
 });
 
