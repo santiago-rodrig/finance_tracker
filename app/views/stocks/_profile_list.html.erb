@@ -16,21 +16,23 @@
           <tr>
             <th scope="row">
               <%= stock.ticker %>
-              <% unless current_user.can_track_stock?(stock.ticker) %>
+              <% unless current_user.can_track_stock?(stock.ticker) || current_user == @user %>
                 <span class="badge badge-info ml-2">
                   tracked
                 </span>
               <% end %>
             </th>
             <td><%= stock.name %></td>
-            <td><%= stock.last_price %></td>
+            <td class="text-success">$ <%= stock.last_price %></td>
             <% unless current_user.max_reached? %>
               <td>
                 <% if current_user.can_track_stock?(stock.ticker) %>
-                  <%= link_to 'Track stock', user_stocks_path(user: current_user, stock_ticker: stock.ticker), method: :post, class: 'btn btn-sm btn-success' %>
+                  <%= link_to 'Track stock', user_stocks_path(user: current_user, stock_ticker: stock.ticker, user_profile: @user), method: :post, remote: true, class: 'btn btn-sm btn-success', role: 'button', tabindex: '-1' %>
+                <% else %>
+                  <%= link_to 'Track stock', user_stocks_path(user: current_user, stock_ticker: stock.ticker, user_profile: @user), method: :post, remote: true, class: 'btn btn-sm btn-success disabled', role: 'button', tabinex: '-1', 'aria-disabled' => 'true' %>
                 <% end %>
                 <% if @user == current_user %>
-                  <%= link_to 'Remove', user_stock_path(user: current_user, stock_tracked: stock), method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+                  <%= link_to 'Remove', user_stock_path(user: current_user, stock_tracked: stock, user_profile: true), method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
                 <% end %>
               </td>
             <% end %>

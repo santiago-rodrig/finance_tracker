@@ -1,11 +1,23 @@
 document.addEventListener('ajax:success', function() {
   let stocksList = document.getElementById('stocks-list');
   let messages = document.getElementById('messages');
-  let result = document.getElementById('<%= @ticker %>');
-  if (result) {
-    document.getElementById('result').innerHTML = '<%= j(render(partial: 'users/result.html')) %>';
-  }
   messages.innerHTML = '<%= j(render(partial: 'layouts/messages.html')) %>';
-  stocksList.innerHTML = '<%= j(render(partial: 'stocks/list.html')) %>';
+  <% if @is_profile %>
+    <% if @tracked_stocks.empty? %>
+      stocksList.innerHTML = '<div class="row"><div class="col-md-9"><div class="alert alert-warning d-inline-block">No stocks in this portfolio.</div></div></div>';
+    <% else %>
+      stocksList.innerHTML = '<%= j(render(partial: 'stocks/profile_list.html')) %>';
+    <% end %>
+  <% else %>
+    let result = document.getElementById('<%= @ticker %>');
+    if (result) {
+      document.getElementById('result').innerHTML = '<%= j(render(partial: 'users/result.html')) %>';
+    }
+    <% if @tracked_stocks.empty? %>
+      stocksList.innerHTML = '';
+    <% else %>
+      stocksList.innerHTML = '<%= j(render(partial: 'stocks/list.html')) %>';
+    <% end %>
+  <% end %>
 });
 

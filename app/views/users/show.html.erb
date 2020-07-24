@@ -12,22 +12,35 @@
   </div>
 </div>
 <h2>Portfolio</h2>
-<% if current_user.max_reached? %>
-  <div class="alert alert-warning d-inline-block">
-    You have reached the maximum number of tracked stocks,
-    you won&apos;t be able to track any stock from this
-    user's portfolio.
-  </div>
-<% end %>
-<% if @tracked_stocks&.any? %>
-  <%= render 'stocks/profile_list' %>
-<% else %>
+<% if @user.max_reached? %>
   <div class="row">
-    <div class="col-9">
-      <div class="alert alert-warning d-inline-block">
-        This user doesn't have any stocks in his portfolio.
+    <div class="col-md-9">
+      <div class="alert alert-info d-inline-block">
+        Maximum number of stocks reached by this user.
       </div>
     </div>
   </div>
 <% end %>
+<% if current_user.max_reached? %>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="alert alert-warning d-inline-block">
+        You reached the maximum number of tracked stocks.
+      </div>
+    </div>
+  </div>
+<% end %>
+<div id="stocks-list">
+  <% if @tracked_stocks&.any? %>
+    <%= render 'stocks/profile_list' %>
+  <% else %>
+    <div class="row">
+      <div class="col-9">
+        <div class="alert alert-warning d-inline-block">
+          No stocks in this portfolio.
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
