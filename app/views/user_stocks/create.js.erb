@@ -1,0 +1,6 @@
+document.addEventListener('ajax:success', function() {
+  document.getElementById('messages').innerHTML = '<%= j(render(partial: 'layouts/messages.html')) %>';
+  document.getElementById('stocks-list').innerHTML = '<%= j(render(partial: 'stocks/list.html')) %>';
+  document.getElementById('result').innerHTML = '<%= j(render(partial: 'users/result.html')) %>';
+});
+

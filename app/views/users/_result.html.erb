@@ -2,7 +2,9 @@
   <div class="col-md-9">
     <div class="list-group list-group-horizontal-md">
       <div class="list-group-item">
-        <h5><%= @stock.name %></h5>
+        <h5 class="<%= 'mb-3' if current_user.can_track_stock?(@stock.ticker) %>">
+          <%= @stock.name %>
+        </h5>
         <% if current_user.can_track_stock?(@stock.ticker) %>
           <dl>
             <dt>Ticker Symbol</dt>
@@ -10,15 +12,18 @@
             <dt>Price</dt>
             <dd class="text-success">$ <%= @stock.last_price %></dd>
           </dl>
+          <div>
+            <%= link_to 'Add to portfolio', user_stocks_path(user: current_user, stock_ticker: @stock.ticker), method: :post, remote: true, class: 'btn btn-success btn-sm' %>
+          </div>
         <% else %>
           <% if current_user.max_reached? %>
-            <span class="badge badge-info">
+            <div class="badge badge-info mb-3">
               You are already tracking ten stocks
-            </span>
+            </div>
           <% else %>
-            <span class="badge badge-info">
-              You are already tracking that stock
-            </span>
+            <div class="badge badge-info mb-3">
+              You are already tracking this stock
+            </div>
           <% end %>
           <dl>
             <dt>Ticker Symbol</dt>

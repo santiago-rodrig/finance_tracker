@@ -13,7 +13,9 @@
   </div>
 </div>
 <div id="result"></div>
-<% if @tracked_stocks&.any? %>
-  <%= render 'stocks/list' %>
-<% end %>
+<div id="stocks-list">
+  <% if @tracked_stocks&.any? %>
+    <%= render 'stocks/list' %>
+  <% end %>
+</div>
 

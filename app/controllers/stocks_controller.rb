@@ -3,6 +3,8 @@ class StocksController < ApplicationController
     if params[:stock].present?
       @stock = Stock.new_lookup(params[:stock])
       if @stock
+        flash.now.notice = nil
+        flash.now.alert = nil
         respond_to do |fmt|
           fmt.js { render partial: 'users/result' }
           fmt.html { render 'users/my_portfolio' }
