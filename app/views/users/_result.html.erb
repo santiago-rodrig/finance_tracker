@@ -1,18 +1,34 @@
-<div class="card card-header results-block mt-4">
-  <strong>Symbol:</strong> <%= @stock.ticker %>
-  <strong>Name:</strong> <%= @stock.name %>
-  <strong>Price:</strong> <%= @stock.last_price %>
-  <% if current_user.can_track_stock?(@stock.ticker) %>
-    <%= link_to 'Add to portfolio', user_stocks_path(user: current_user, stock_ticker: @stock.ticker), method: :post, class: 'btn btn-sm btn-success' %>
-  <% else %>
-    <span class="badge badge-info">
-      You are already tracking
-      <% if current_user.max_reached? %>
-        ten stocks
-      <% else %>
-        that stock
-      <% end %>
-    </span>
-  <% end %>
+<div class="row mt-4">
+  <div class="col-md-9">
+    <div class="list-group list-group-horizontal-md">
+      <div class="list-group-item">
+        <h5><%= @stock.name %></h5>
+        <% if current_user.can_track_stock?(@stock.ticker) %>
+          <dl>
+            <dt>Ticker Symbol</dt>
+            <dd><%= @stock.ticker %></dd>
+            <dt>Price</dt>
+            <dd class="text-success">$ <%= @stock.last_price %></dd>
+          </dl>
+        <% else %>
+          <% if current_user.max_reached? %>
+            <span class="badge badge-info">
+              You are already tracking ten stocks
+            </span>
+          <% else %>
+            <span class="badge badge-info">
+              You are already tracking that stock
+            </span>
+          <% end %>
+          <dl>
+            <dt>Ticker Symbol</dt>
+            <dd><%= @stock.ticker %></dd>
+            <dt>Price</dt>
+            <dd class="text-success">$ <%= @stock.last_price %></dd>
+          </dl>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
