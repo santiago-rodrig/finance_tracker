@@ -46,3 +46,6 @@ yarn-debug.log*
 
 # sublime files
 *.sublime-workspace
+
+# solargraph configuration
+.solargraph.yml
