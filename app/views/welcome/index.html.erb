@@ -1,2 +1,28 @@
-<h1 class="mt-3 mt-md-4">Welcome to the Finance Tracker app</h1>
-
+<div class="jumbotron">
+  <h1 class="display-4">Finance Tracker</h1>
+  <p class="lead">
+  This applications is designed for tracking the price of stocks. Go ahead and
+  <a href="#instructions">read the instructions</a>!
+  </p>
+  <% unless user_signed_in? %>
+    <hr class="my-4">
+    <p>If you are not yet signed up you can do so by clicking the button below.</p>
+    <%= link_to 'Sign up', new_user_registration_path, role: 'button', tabindex: '-1', class: 'btn btn-success btn-lg' %>
+  <% end %>
+</div>
+<iframe id="video-frame" src="https://www.youtube.com/embed/F3QpgXBtDeo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<hr />
+<h2 id="instructions">Instructions</h2>
+<ol>
+  <li>Visit your stocks portfolio by clicking the <strong>Portfolio navigation link</strong> at the top</li>
+  <li>Search some stocks (you need to know the specific symbol) and add them to your portfolio</li>
+  <li>Remove them if you want to, you have a maximum of 10 tracked stocks</li>
+  <li>Visit your friends list by clicking the <strong>Friends navigation link</strong> at the top</li>
+  <li>Search users by name or email and add them to your list</li>
+  <li>Take a look at the stocks tracked by your friends and optionally add them to your portfolio</li>
+</ol>
+<h2>Useful links</h2>
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Stock">What are stocks?</a></li>
+  <li><a href="https://swingtradebot.com/equities">List of all stocks</a></li>
+</ul>

@@ -4,6 +4,22 @@ html {
   box-sizing: border-box;
 }
 
+body {
+  position: relative;
+  padding-bottom: 300px;
+  min-height: 100vh;
+}
+
+#video-frame {
+  width: 300px;
+  height: 168px;
+
+  @media only screen and (min-width: 768px) {
+    width: 560px;
+    height: 315px;
+  }
+}
+
 *::before,
 *,
 *::after {
@@ -22,6 +38,13 @@ html {
   animation-duration: 2s;
   animation-timing-function: ease;
   animation-name: flashy;
+}
+
+#main-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 @keyframes flashy {
