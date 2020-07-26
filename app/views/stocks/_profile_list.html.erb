@@ -13,17 +13,19 @@
       </thead>
       <tbody id="stocks">
         <% @tracked_stocks.each do |stock| %>
-          <tr>
+          <tr id="<%= stock.ticker %>">
             <th scope="row">
-              <%= stock.ticker %>
+              <span id="<%= stock.ticker %>-ticker"><%= stock.ticker %></span>
               <% unless current_user.can_track_stock?(stock.ticker) || current_user == @user %>
                 <span class="badge badge-info ml-2">
                   tracked
                 </span>
               <% end %>
             </th>
-            <td><%= stock.name %></td>
-            <td class="text-success">$ <%= stock.last_price %></td>
+            <td id="<%= stock.ticker %>-name"><%= stock.name %></td>
+            <td class="text-success" id="<%= stock.ticker %>-price">
+              $ <%= stock.last_price %>
+            </td>
             <% unless current_user.max_reached? %>
               <td>
                 <% if current_user.can_track_stock?(stock.ticker) %>

@@ -18,3 +18,23 @@ html {
   overflow: auto;
 }
 
+.updated {
+  animation-duration: 2s;
+  animation-timing-function: ease;
+  animation-name: flashy;
+}
+
+@keyframes flashy {
+  0% {
+    background-color: white;
+  }
+
+  50% {
+    background-color: yellow;
+  }
+
+  100% {
+    background-color: white;
+  }
+}
+

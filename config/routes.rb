@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   get 'friendships', to: 'friendships#index'
   delete 'friendship', to: 'friendships#destroy'
   resources :users, only: :show
+  mount ActionCable.server, at: '/cable'
 end
 

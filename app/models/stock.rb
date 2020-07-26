@@ -20,4 +20,10 @@ class Stock < ApplicationRecord
       nil
     end
   end
+
+  def to_h
+    attributes.reject do |k, v|
+      %w[id created_at updated_at].include?(k)
+    end
+  end
 end
