@@ -11,8 +11,13 @@ body {
 }
 
 #video-frame {
-  width: 300px;
-  height: 168px;
+  width: 275px;
+  height: 154px;
+
+  @media only screen and (min-width: 360px) {
+    width: 300px;
+    height: 168px
+  }
 
   @media only screen and (min-width: 768px) {
     width: 560px;
