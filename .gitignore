@@ -49,3 +49,6 @@ yarn-debug.log*
 
 # solargraph configuration
 .solargraph.yml
+
+# visual studio code files
+.vscode
