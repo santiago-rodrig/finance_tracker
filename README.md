@@ -56,7 +56,25 @@ Run the migrations.
 rails db:migrate
 ```
 
-Start the local web server.
+Create an account with IEX Cloud if you don't have one already.
+
+Start editing you application credentials.
+
+```sh
+EDITOR=vim rails credentials:edit
+```
+
+Insert the following code.
+
+```yaml
+iex:
+  sandbox_public_key: YOUR_IEX_SANDBOX_PUBLIC_API_TOKEN
+  sandbox_secret_key: YOUR_IEX_SANDBOX_SECRET_API_KEY
+redis:
+  url: THE_URL_OF_YOUR_REDIS_SERVER
+```
+
+Start the local web server (no Redis needed).
 
 ```sh
 rails server
