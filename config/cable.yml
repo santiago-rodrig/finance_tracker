@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: <%= Rails.application.credentials.redis['url'] %>
+  url: <%= Rails.application.credentials.redis[:url] %>
   channel_prefix: finance_tracker_production
