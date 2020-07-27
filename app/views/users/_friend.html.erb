@@ -1,0 +1,26 @@
+<div class="list-group-item">
+  <div>
+    <h5><%= friend.full_name %></h5>
+  </div>
+  <div class="mb-3">
+    <% if friend == current_user %>
+      <span class="badge badge-info">
+        You are this user
+      </span>
+    <% elsif current_user.friends.include?(friend) %>
+      <span class="badge badge-info">
+        You are already following this user
+      </span>
+    <% end %>
+  </div>
+  <dl>
+    <dt>Email</dt>
+    <dd><%= friend.email %></dd>
+  </dl>
+  <div>
+    <%= link_to 'View profile', friend, class: 'btn btn-sm btn-dark' %>
+    <% if current_user.can_track_friend?(friend) %>
+      <%= link_to 'Start following', friendships_path(user: current_user, new_friend: friend), method: :post, class: 'btn btn-sm btn-success', remote: true %>
+    <% end %>
+  </div>
+</div>

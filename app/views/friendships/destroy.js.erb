@@ -1,10 +1,8 @@
 document.addEventListener('ajax:success', function() {
   let messages = document.getElementById('messages');
   let friendsList = document.getElementById('friends-list');
-  let resultActions = document.getElementById('result-actions-<%= @friend.id.to_s %>');
-  if (resultActions) {
-    resultActions.innerHTML = '<%= link_to 'Start following', friendships_path(user: current_user, new_friend: @friend), method: :post, class: 'btn btn-sm btn-success', remote: true %>';
-  }
+  let friendItem = document.getElementById('friend-<%= @friend.id %>')
+  friendItem.innerHTML = '<%= j(render(partial: 'users/friend', locals: { friend: @friend })) %>';
   messages.innerHTML = '<%= j(render(partial: 'layouts/messages.html')) %>';
   <% if @tracked_friends&.any? %>
     friendsList.innerHTML = '<%= j(render(partial: 'friendships/list.html')) %>';
