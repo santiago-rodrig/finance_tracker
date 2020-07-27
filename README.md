@@ -1,13 +1,13 @@
 <!-- place all the badges here -->
 ![release badge](https://img.shields.io/github/v/release/santiago-rodrig/finance_tracker)
-![website state badge](https://img.shields.io/website?down_color=lightgrey&down_message=offline&up_color=green&up_message=online&url=URL_ESCAPED_WEBSITE)
+![website state badge](https://img.shields.io/website?down_color=lightgrey&down_message=offline&up_color=green&up_message=online&url=https%3A%2F%2Fsrodrig-finance-tracker.herokuapp.com%2F)
 ![license badge](https://img.shields.io/github/license/santiago-rodrig/finance_tracker)
 ![followers](https://img.shields.io/github/followers/santiago-rodrig?style=social)
 ![stars](https://img.shields.io/github/stars/santiago-rodrig/finance_tracker?style=social)
 
 # Finance Tracker
 
-[live version](LIVE_VERSION_URL)
+[live version](https://srodrig-finance-tracker.herokuapp.com)
 
 ![app gif demo](./doc/demo.gif)
 
@@ -27,11 +27,42 @@ track the stocks of their friends.
 
 ## Requirements
 
-- Place here the basic dependencies
+- [Rails](https://rubyonrails.org/) (~> 6.0.3)
+- [Ruby](https://www.ruby-lang.org/en/) (~> 2.6.6)
+- [Bundler](https://bundler.io/v2.1/#getting-started) (2.1.4)
+- [Node](https://nodejs.org/en/) (~> v14.5.0)
+- [Yarn](https://yarnpkg.com/getting-started/install) (~> 1.22.4)
+- [SQLite](https://www.sqlite.org/index.html) (~> 3.28.0)
 
 ## Setup
 
-Elaborate on the steps required for setting up the project locally
+First, clone the repository.
+
+```sh
+git clone https://github.com/santiago-rodrig/finance_tracker.git && \
+cd finance_tracker
+```
+
+Install the dependencies.
+
+```sh
+bundle config set without 'production' && \
+bundle install
+```
+
+Run the migrations.
+
+```sh
+rails db:migrate
+```
+
+Start the local web server.
+
+```sh
+rails server
+```
+
+Visit [localhost at port 3000](http://localhost:3000) and interact with the application.
 
 ## Collaboration
 

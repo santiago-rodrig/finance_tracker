@@ -1,6 +1,8 @@
 document.addEventListener('ajax:success', function() {
   document.getElementById('messages').innerHTML = '<%= j(render('layouts/messages')) %>';
-  document.getElementById('stocks-list').innerHTML = '<%= j(render('stocks/list.html')) %>';
+  <% if @tracked_stocks&.any? %>
+    document.getElementById('stocks-list').innerHTML = '<%= j(render('stocks/list.html')) %>';
+  <% end %>
   <% if @stock %>
       document.getElementById('result').innerHTML = '<%= j(render('users/result.html')) %>';
   <% end %>
